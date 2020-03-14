@@ -13,7 +13,6 @@ class FileVideoStream:
 		# initialize the queue used to store frames read from
 		# the video file
 		self.Q = Queue(maxsize=queueSize)
-        return self
     
 	def start(self):
 		# start a thread to read frames from the file video stream
@@ -43,7 +42,7 @@ class FileVideoStream:
         
 	def read(self):
 		# return next frame in the queue
-		return self.Q.get()
+		return self.more(),self.Q.get()
         
 	def more(self):
 		# return True if there are still frames in the queue

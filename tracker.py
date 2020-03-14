@@ -28,3 +28,14 @@ def createTrackerByName(trackerType):
             print(t)
     
     return tracker
+
+def create_multiTracker(bboxes,frame,trackerType = "CSRT"):
+    # Specify the tracker type
+    trackerType = trackerType
+    # Create MultiTracker object
+    multiTracker = cv2.MultiTracker_create()
+    # Initialize MultiTracker 
+    for bbox in bboxes:
+        multiTracker.add(createTrackerByName(trackerType), frame, bbox)
+    print("Tracker Created ...")
+    return multiTracker
