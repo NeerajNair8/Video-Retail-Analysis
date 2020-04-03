@@ -46,8 +46,11 @@ class FileVideoStream:
         
 	def more(self):
 		# return True if there are still frames in the queue
-		return self.Q.qsize() > 0
+		return not self.stopped
         
 	def stop(self):
 		# indicate that the thread should be stopped
 		self.stopped = True
+    
+	def qsize(self):
+		return self.Q.qsize()
